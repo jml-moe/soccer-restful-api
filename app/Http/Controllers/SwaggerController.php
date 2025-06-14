@@ -29,5 +29,5 @@ namespace App\Http\Controllers;
  */
 class SwaggerController extends Controller
 {
-    // File ini hanya untuk anotasi dokumentasi, tidak perlu method apapun.
+   
 }

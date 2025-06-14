@@ -5,7 +5,7 @@ return [
     'documentations' => [
         'default' => [
             'api' => [
-                'title' => 'L5 Swagger UI',
+                'title' => 'Dokumentasi API Pengelolaan Pertandingan Sepak Bola',
             ],
 
             'routes' => [
