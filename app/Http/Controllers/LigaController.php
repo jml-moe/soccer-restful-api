@@ -33,16 +33,14 @@ class LigaController extends Controller
      *         response=200,
      *         description="Berhasil mengambil daftar liga",
      *         @OA\JsonContent(
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Daftar Liga"),
-     *             @OA\Property(property="data", type="array", @OA\Items(ref="#/components/schemas/Liga"))
+     *             @OA\Property(property="message", type="string", example="Daftar Liga")
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -50,15 +48,27 @@ class LigaController extends Controller
      *         description="Internal Server Error",
      *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Terjadi kesalahan pada server.")),
      *         content={"application/json":{}}
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tidak ada data liga ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="message", type="string", example="Tidak ada data liga ditemukan")
+     *         ),
+     *         content={"application/json":{}}
      *     )
      * )
      */
     public function index()
     {
+        $data = Liga::all();
+        if ($data->isEmpty()) {
+            return response()->json([
+                'message' => 'Tidak ada data liga ditemukan'
+            ], 404);
+        }
         return response()->json([
-            'success' => true,
-            'message' => 'Daftar Liga',
-            'data' => Liga::all()
+            'message' => 'Daftar Liga'
         ]);
     }
 
@@ -91,15 +101,15 @@ class LigaController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -159,7 +169,7 @@ class LigaController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -227,15 +237,15 @@ class LigaController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -296,7 +306,7 @@ class LigaController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

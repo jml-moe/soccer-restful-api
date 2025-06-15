@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 /**
  * @OA\Tag(
  *     name="Auth",
- *     description="Autentikasi user (register, login, me, logout)"
+ *     description="Autentikasi user (register, login, logout)"
  * )
  *
  * @OA\Schema(
@@ -48,8 +48,8 @@ class AuthController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
@@ -110,8 +110,8 @@ class AuthController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
@@ -141,32 +141,7 @@ class AuthController extends Controller
         return response()->json(['token' => $token, 'user' => $user]);
     }
 
-    /**
-     * @OA\Get(
-     *     path="/api/me",
-     *     tags={"Auth"},
-     *     summary="Ambil data user yang sedang login",
-     *     security={{"sanctum":{}}},
-     *     @OA\Response(
-     *         response=200,
-     *         description="Data user",
-     *         @OA\JsonContent(ref="#/components/schemas/User"),
-     *         content={"application/json":{}}
-     *     ),
-     *     @OA\Response(
-     *         response=401,
-     *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
-     *         content={"application/json":{}}
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal Server Error",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Terjadi kesalahan pada server.")),
-     *         content={"application/json":{}}
-     *     )
-     * )
-     */
+
     public function me(Request $request)
     {
         return response()->json($request->user());
@@ -187,7 +162,7 @@ class AuthController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
