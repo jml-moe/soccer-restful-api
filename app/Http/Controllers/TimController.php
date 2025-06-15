@@ -51,9 +51,8 @@ class TimController extends Controller
      *         response=404,
      *         description="Tidak ada data tim ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="success", type="boolean", example=false),
      *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan"),
-     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
+     *             
      *         ),
      *         content={"application/json":{}}
      *     )

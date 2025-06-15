@@ -55,9 +55,8 @@ class KlasemenController extends Controller
      *         response=404,
      *         description="Tidak ada data klasemen ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="success", type="boolean", example=false),
      *             @OA\Property(property="message", type="string", example="Tidak ada data klasemen ditemukan"),
-     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
+     *             
      *         ),
      *         content={"application/json":{}}
      *     )
