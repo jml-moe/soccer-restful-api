@@ -32,9 +32,7 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Berhasil mengambil daftar tim",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Daftar Tim")
-     *         ),
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Tim")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -53,7 +51,9 @@ class TimController extends Controller
      *         response=404,
      *         description="Tidak ada data tim ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan")
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan"),
+     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -64,11 +64,15 @@ class TimController extends Controller
         $data = Tim::all();
         if ($data->isEmpty()) {
             return response()->json([
-                'message' => 'Tidak ada data tim ditemukan'
+                'success' => false,
+                'message' => 'Tidak ada data tim ditemukan',
+                'data' => []
             ], 404);
         }
         return response()->json([
-            'message' => 'Daftar Tim'
+            'success' => true,
+            'message' => 'Daftar Tim',
+            'data' => $data
         ]);
     }
 

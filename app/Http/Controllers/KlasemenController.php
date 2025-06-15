@@ -36,9 +36,7 @@ class KlasemenController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Berhasil mengambil daftar klasemen",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Daftar Klasemen")
-     *         ),
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Klasemen")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -57,7 +55,9 @@ class KlasemenController extends Controller
      *         response=404,
      *         description="Tidak ada data klasemen ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data klasemen ditemukan")
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data klasemen ditemukan"),
+     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -68,11 +68,15 @@ class KlasemenController extends Controller
         $data = Klasemen::with('tim')->get();
         if ($data->isEmpty()) {
             return response()->json([
-                'message' => 'Tidak ada data klasemen ditemukan'
+                'success' => false,
+                'message' => 'Tidak ada data klasemen ditemukan',
+                'data' => []
             ], 404);
         }
         return response()->json([
-            'message' => 'Daftar Klasemen'
+            'success' => true,
+            'message' => 'Daftar Klasemen',
+            'data' => $data
         ]);
     }
 

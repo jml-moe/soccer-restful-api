@@ -37,9 +37,7 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Berhasil mengambil daftar pertandingan",
-     *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Daftar Pertandingan")
-     *         ),
+     *         @OA\JsonContent(type="array", @OA\Items(ref="#/components/schemas/Pertandingan")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -58,7 +56,9 @@ class PertandinganController extends Controller
      *         response=404,
      *         description="Tidak ada data pertandingan ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data pertandingan ditemukan")
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data pertandingan ditemukan"),
+     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -69,11 +69,15 @@ class PertandinganController extends Controller
         $data = Pertandingan::all();
         if ($data->isEmpty()) {
             return response()->json([
-                'message' => 'Tidak ada data pertandingan ditemukan'
+                'success' => false,
+                'message' => 'Tidak ada data pertandingan ditemukan',
+                'data' => []
             ], 404);
         }
         return response()->json([
-            'message' => 'Daftar Pertandingan'
+            'success' => true,
+            'message' => 'Daftar Pertandingan',
+            'data' => $data
         ]);
     }
 

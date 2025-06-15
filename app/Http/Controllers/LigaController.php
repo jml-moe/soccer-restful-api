@@ -33,7 +33,9 @@ class LigaController extends Controller
      *         response=200,
      *         description="Berhasil mengambil daftar liga",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Daftar Liga")
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="Daftar Liga"),
+     *             @OA\Property(property="data", type="array", @OA\Items(ref="#/components/schemas/Liga"))
      *         ),
      *         content={"application/json":{}}
      *     ),
@@ -53,7 +55,9 @@ class LigaController extends Controller
      *         response=404,
      *         description="Tidak ada data liga ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data liga ditemukan")
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data liga ditemukan"),
+     *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -64,11 +68,15 @@ class LigaController extends Controller
         $data = Liga::all();
         if ($data->isEmpty()) {
             return response()->json([
-                'message' => 'Tidak ada data liga ditemukan'
+                'success' => false,
+                'message' => 'Tidak ada data liga ditemukan',
+                'data' => []
             ], 404);
         }
         return response()->json([
-            'message' => 'Daftar Liga'
+            'success' => true,
+            'message' => 'Daftar Liga',
+            'data' => $data
         ]);
     }
 
