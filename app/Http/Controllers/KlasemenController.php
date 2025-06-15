@@ -55,8 +55,8 @@ class KlasemenController extends Controller
      *         response=404,
      *         description="Tidak ada data klasemen ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data klasemen ditemukan"),
-     *             
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data klasemen ditemukan")
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -69,7 +69,7 @@ class KlasemenController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data klasemen ditemukan',
-                'data' => []
+                
             ], 404);
         }
         return response()->json([
@@ -165,7 +165,10 @@ class KlasemenController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Klasemen tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -223,7 +226,10 @@ class KlasemenController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Klasemen tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -289,7 +295,10 @@ class KlasemenController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Klasemen tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Klasemen tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

@@ -55,8 +55,8 @@ class LigaController extends Controller
      *         response=404,
      *         description="Tidak ada data liga ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data liga ditemukan"),
-     *             
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data liga ditemukan")
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -69,7 +69,7 @@ class LigaController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data liga ditemukan',
-                'data' => []
+                
             ], 404);
         }
         return response()->json([
@@ -170,7 +170,10 @@ class LigaController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Liga tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=false), @OA\Property(property="message", type="string", example="Liga tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Liga tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -237,7 +240,10 @@ class LigaController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Liga tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=false), @OA\Property(property="message", type="string", example="Liga tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Liga tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -307,7 +313,10 @@ class LigaController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Liga tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=false), @OA\Property(property="message", type="string", example="Liga tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Liga tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

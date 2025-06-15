@@ -51,8 +51,8 @@ class TimController extends Controller
      *         response=404,
      *         description="Tidak ada data tim ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan"),
-     *             
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan")
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -65,7 +65,7 @@ class TimController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data tim ditemukan',
-                'data' => []
+                
             ], 404);
         }
         return response()->json([
@@ -150,7 +150,10 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -204,7 +207,10 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -264,7 +270,10 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

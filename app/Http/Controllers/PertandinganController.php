@@ -56,8 +56,8 @@ class PertandinganController extends Controller
      *         response=404,
      *         description="Tidak ada data pertandingan ditemukan",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="Tidak ada data pertandingan ditemukan"),
-     *             
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data pertandingan ditemukan")
      *         ),
      *         content={"application/json":{}}
      *     )
@@ -70,7 +70,7 @@ class PertandinganController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Tidak ada data pertandingan ditemukan',
-                'data' => []
+                
             ], 404);
         }
         return response()->json([
@@ -167,7 +167,10 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -227,7 +230,10 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -293,7 +299,10 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
