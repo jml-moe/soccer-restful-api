@@ -38,7 +38,7 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -46,12 +46,33 @@ class TimController extends Controller
      *         description="Internal Server Error",
      *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Terjadi kesalahan pada server.")),
      *         content={"application/json":{}}
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tidak ada data tim ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data tim ditemukan")
+     *         ),
+     *         content={"application/json":{}}
      *     )
      * )
      */
     public function index()
     {
-        return response()->json(Tim::all());
+        $data = Tim::all();
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data tim ditemukan',
+                
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Daftar Tim',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -78,15 +99,15 @@ class TimController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -129,13 +150,16 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -183,22 +207,25 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -243,13 +270,16 @@ class TimController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Tim tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

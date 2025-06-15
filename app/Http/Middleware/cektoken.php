@@ -16,7 +16,7 @@ class cektoken
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->bearerToken()) {
-            return response()->json(['message' => 'Token tidak ada'], 401);
+            return response()->json(['message' => 'Access Denied'], 401);
         }
         return $next($request);
     }
