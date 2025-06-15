@@ -332,12 +332,6 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Tidak ada data klasemen ditemukan"
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object"
-                                            }
                                         }
                                     },
                                     "type": "object"
@@ -509,6 +503,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -641,6 +639,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -746,6 +748,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -875,12 +881,6 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Tidak ada data liga ditemukan"
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object"
-                                            }
                                         }
                                     },
                                     "type": "object"
@@ -1420,12 +1420,6 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Tidak ada data pertandingan ditemukan"
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object"
-                                            }
                                         }
                                     },
                                     "type": "object"
@@ -1601,6 +1595,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1737,6 +1735,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1842,6 +1844,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1958,12 +1964,6 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Tidak ada data tim ditemukan"
-                                        },
-                                        "data": {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object"
-                                            }
                                         }
                                     },
                                     "type": "object"
@@ -2110,6 +2110,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -2217,6 +2221,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -2322,6 +2330,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
