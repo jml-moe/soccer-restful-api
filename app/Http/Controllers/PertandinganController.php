@@ -43,7 +43,7 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -51,12 +51,33 @@ class PertandinganController extends Controller
      *         description="Internal Server Error",
      *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Terjadi kesalahan pada server.")),
      *         content={"application/json":{}}
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Tidak ada data pertandingan ditemukan",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Tidak ada data pertandingan ditemukan")
+     *         ),
+     *         content={"application/json":{}}
      *     )
      * )
      */
     public function index()
     {
-        return response()->json(Pertandingan::all());
+        $data = Pertandingan::all();
+        if ($data->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Tidak ada data pertandingan ditemukan',
+                
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Daftar Pertandingan',
+            'data' => $data
+        ]);
     }
 
     /**
@@ -89,15 +110,15 @@ class PertandinganController extends Controller
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -146,13 +167,16 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -206,22 +230,25 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=422,
      *         description="Validasi gagal",
      *         @OA\JsonContent(
-     *             @OA\Property(property="message", type="string", example="The given data was invalid."),
-     *             @OA\Property(property="errors", type="object")
+     *             @OA\Property(property="message", type="string", example="Validation error"),
+     *             
      *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
@@ -272,13 +299,16 @@ class PertandinganController extends Controller
      *     @OA\Response(
      *         response=404,
      *         description="Pertandingan tidak ditemukan",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Data tidak ditemukan")),
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Data tidak ditemukan")
+     *         ),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(
      *         response=401,
      *         description="Unauthorized",
-     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Unauthenticated.")),
+     *         @OA\JsonContent(@OA\Property(property="message", type="string", example="Access Denied")),
      *         content={"application/json":{}}
      *     ),
      *     @OA\Response(

@@ -6,7 +6,6 @@ use App\Http\Controllers\API\LigaController;
 use App\Http\Controllers\API\PertandinganController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/api/documentation');
 });
-
 

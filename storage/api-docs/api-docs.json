@@ -73,10 +73,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -178,10 +175,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -206,64 +200,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/me": {
-            "get": {
-                "tags": [
-                    "Auth"
-                ],
-                "summary": "Ambil data user yang sedang login",
-                "operationId": "9d9bc556f927575aa492a88c28fe5908",
-                "responses": {
-                    "200": {
-                        "description": "Data user",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/User"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Unauthenticated."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Terjadi kesalahan pada server."
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "sanctum": []
-                    }
-                ]
             }
         },
         "/api/logout": {
@@ -298,7 +234,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -359,7 +295,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -376,6 +312,26 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Terjadi kesalahan pada server."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Tidak ada data klasemen ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tidak ada data klasemen ditemukan"
                                         }
                                     },
                                     "type": "object"
@@ -464,10 +420,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -483,7 +436,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -550,6 +503,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -568,7 +525,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -682,6 +639,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -700,10 +661,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -719,7 +677,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -790,6 +748,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Klasemen tidak ditemukan"
@@ -808,7 +770,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -882,7 +844,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -899,6 +861,26 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Terjadi kesalahan pada server."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Tidak ada data liga ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tidak ada data liga ditemukan"
                                         }
                                     },
                                     "type": "object"
@@ -980,10 +962,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -999,7 +978,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1101,7 +1080,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1230,10 +1209,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -1249,7 +1225,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1346,7 +1322,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1407,7 +1383,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1424,6 +1400,26 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Terjadi kesalahan pada server."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Tidak ada data pertandingan ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tidak ada data pertandingan ditemukan"
                                         }
                                     },
                                     "type": "object"
@@ -1516,10 +1512,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -1535,7 +1528,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1602,6 +1595,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1620,7 +1617,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1738,6 +1735,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1756,10 +1757,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -1775,7 +1773,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1846,6 +1844,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -1864,7 +1866,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1925,7 +1927,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -1942,6 +1944,26 @@
                                         "message": {
                                             "type": "string",
                                             "example": "Terjadi kesalahan pada server."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Tidak ada data tim ditemukan",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Tidak ada data tim ditemukan"
                                         }
                                     },
                                     "type": "object"
@@ -2005,10 +2027,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -2024,7 +2043,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -2091,6 +2110,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -2109,7 +2132,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -2198,6 +2221,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -2216,10 +2243,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "The given data was invalid."
-                                        },
-                                        "errors": {
-                                            "type": "object"
+                                            "example": "Validation error"
                                         }
                                     },
                                     "type": "object"
@@ -2235,7 +2259,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -2306,6 +2330,10 @@
                             "application/json": {
                                 "schema": {
                                     "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
                                         "message": {
                                             "type": "string",
                                             "example": "Data tidak ditemukan"
@@ -2324,7 +2352,7 @@
                                     "properties": {
                                         "message": {
                                             "type": "string",
-                                            "example": "Unauthenticated."
+                                            "example": "Access Denied"
                                         }
                                     },
                                     "type": "object"
@@ -2513,7 +2541,7 @@
     "tags": [
         {
             "name": "Auth",
-            "description": "Autentikasi user (register, login, me, logout)"
+            "description": "Autentikasi user (register, login, logout)"
         },
         {
             "name": "Klasemen",
